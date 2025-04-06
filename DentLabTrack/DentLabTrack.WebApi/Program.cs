@@ -78,8 +78,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 var connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<DentLabTrackDbContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));//Generic oldugu için typeof kullanýldý
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 builder.Services.AddScoped<IUserService, UserManager>();
 builder.Services.AddScoped<IDoctorService, DoctorManager>();

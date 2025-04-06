@@ -13,9 +13,6 @@ namespace DentLabTrack.Data.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
-        //Burada şu işlemleri yapıyoruz: IRepository<TEntity> sınıfında tanımlanan metotları implement ediyoruz ve bu metotları kullanarak veritabanı işlemlerini gerçekleştiriyoruz.
-
-
         private readonly DentLabTrackDbContext _context;
         private readonly DbSet<TEntity> _dbSet;
         public Repository(DentLabTrackDbContext context)
@@ -68,9 +65,8 @@ namespace DentLabTrack.Data.Repositories
         public IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate = null)
         {
             return predicate == null
-                  ? _dbSet.Where(x => !x.IsDeleted) // Bunu ekle
+                  ? _dbSet.Where(x => !x.IsDeleted) 
                   : _dbSet.Where(x => !x.IsDeleted).Where(predicate);
-            //? _dbSet: _dbSet.Where(predicate);
         }
 
 
@@ -84,7 +80,7 @@ namespace DentLabTrack.Data.Repositories
         {
 
             return _context.Orders
-                .Include(o => o.Patient) // Eğer hasta bilgisine ihtiyacımız varsa
+                .Include(o => o.Patient) 
                 .Where(o => o.DoctorId == doctorId)
                 .ToList();
         }

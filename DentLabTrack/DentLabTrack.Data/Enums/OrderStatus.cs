@@ -8,7 +8,7 @@ namespace DentLabTrack.Data.Enums
 {
     public enum OrderStatus
     {
-        //Burada siparişin durumunu belirtiyoruz
+        
         Pending, InProduction, Completed, Delivered
     }
 }

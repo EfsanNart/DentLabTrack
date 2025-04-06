@@ -14,8 +14,4 @@
     <ProjectReference Include="..\DentLabTrack.Data\DentLabTrack.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Operations\Setting\Dto\" />
-  </ItemGroup>
-
 </Project>

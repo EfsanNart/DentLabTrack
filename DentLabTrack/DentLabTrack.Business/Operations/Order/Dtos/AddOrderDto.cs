@@ -15,6 +15,6 @@ namespace DentLabTrack.Business.Operations.Order.Dtos
         public OrderStatus OrderStatus { get; set; } 
         public DateTime OrderDate { get; set; }
         public DateTime? EstimatedDeliveryDate { get; set; }
-        public List<int> TechnicianIds { get; set; } // çoklu teknisyen atanacak
+        public List<int> TechnicianIds { get; set; } 
     }
 }

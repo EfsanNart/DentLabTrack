@@ -12,9 +12,7 @@ namespace DentLabTrack.Data.Context
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Fluent Api
-
-            //Burada Entity'lerimizi konfigüre ediyoruz. Örneğin, hangi Entity'nin hangi tabloya karşılık geldiğini, hangi alanların zorunlu olduğunu vesaire ayarlıyoruz.
+            
 
             modelBuilder.ApplyConfiguration(new DoctorConfiguration());
             modelBuilder.ApplyConfiguration(new LabTechnicianConfiguration());
@@ -24,19 +22,18 @@ namespace DentLabTrack.Data.Context
             modelBuilder.ApplyConfiguration(new OrderTechnicianConfiguration());
 
             
-            modelBuilder.Entity<SettingEntity>().HasData(new SettingEntity  //Burada veritabanına başlangıç verisi ekliyoruz 
+            modelBuilder.Entity<SettingEntity>().HasData(new SettingEntity 
             {
                 Id = 1,
                 MaintenenceMode = false,
                 
-            }); // Bu ayar, bakım modunun kapalı olduğunu gösteriyor. İstek attığımızda bu ayar kontrol edilecek ve eğer bakım modunda değilse istek işlenecek.
-                // Eğer bakım modunda ise, istek işlenmeyecek ve kullanıcıya bir hata mesajı dönecek.
+            }); 
 
             base.OnModelCreating(modelBuilder);
 
 
         }
-        //Burada Tablolarımızı DbSet olarak tanımlıyoruz. Bu DbSet'ler, veritabanındaki tablolarla etkileşim kurmamızı sağlıyor.
+   
         public DbSet<UserEntity> Users=> Set<UserEntity>();
         public DbSet<LabTechnicianEntity> LabTechnicians => Set<LabTechnicianEntity>();
         public DbSet<DoctorEntity> Doctors => Set<DoctorEntity>();

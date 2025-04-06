@@ -9,7 +9,7 @@ namespace DentLabTrack.Business.DataProtection
 {
     public class DataProtection : IDataProtection
     {
-        //Şifreleme için Data Protection kullanıyoruz 
+  
 
         private readonly IDataProtector _protector;
         public DataProtection(IDataProtectionProvider provider)

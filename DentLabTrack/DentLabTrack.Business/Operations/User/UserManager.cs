@@ -17,11 +17,11 @@ namespace DentLabTrack.Business.Operations.User
     public class UserManager : IUserService
         
     {
-        //Burada dependency injection ile sınıflarımı alıyorum.
+       
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<UserEntity> _userRepository;
         private readonly IDataProtection _dataProtection;
-        //Constructor injection ile sınıflarımı alıyorum
+        
         public UserManager(IUnitOfWork unitOfWork, IRepository<UserEntity> userRepository,IDataProtection dataProtection)
         {
             _unitOfWork = unitOfWork;
@@ -46,7 +46,7 @@ namespace DentLabTrack.Business.Operations.User
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Password = _dataProtection.Protect(user.Password),
-                UserType = UserType.Admin // Varsayılan olarak Admin olarak ayarlandı, ihtiyaca göre değiştirilebilir
+                UserType = UserType.Admin 
             };
             _userRepository.Add(userEntity);
             try

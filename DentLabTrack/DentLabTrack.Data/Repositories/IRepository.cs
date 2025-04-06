@@ -11,9 +11,6 @@ namespace DentLabTrack.Data.Repositories
     public interface IRepository<TEntity> where TEntity : class
     {
 
-        //  Repository sınıfı, veritabanı işlemlerini gerçekleştirmek için kullanılır.Yani veritabanına veri eklemek, silmek, güncellemek ve verileri almak için kullanılır.
-
-
         void Add(TEntity entity);
         void Delete(TEntity entity,bool softDelete=true);
         void Delete(int id);

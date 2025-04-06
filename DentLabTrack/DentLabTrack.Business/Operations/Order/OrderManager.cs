@@ -115,56 +115,7 @@ namespace DentLabTrack.Business.Operations.Order
 
         }
 
-        //public async Task<ServiceMessage> DeleteOrder(int id)
-        //{
-        //    // Siparişi ve ilişkilendirilmiş teknisyenleri alırken soft delete'leri kontrol et
-        //    var order = await _orderRepository
-        //        .GetAll(o => o.Id == id && !o.IsDeleted)
-        //        .Include(o => o.OrderTechnicians.Where(ot => !ot.IsDeleted)) // Teknisyenler için aynı filtreyi ekle
-        //        .FirstOrDefaultAsync();
 
-        //    if (order == null)
-        //    {
-        //        return new ServiceMessage
-        //        {
-        //            IsSucceed = false,
-        //            Message = "Bu ID ile eşleşen bir sipariş bulunamadı."
-        //        };
-        //    }
-
-        //    // İlişkili teknisyenlerin soft delete edilmesi
-        //    foreach (var ot in order.OrderTechnicians)
-        //    {
-        //        ot.IsDeleted = true;
-        //        ot.UpdatedAt = DateTime.Now;
-        //    }
-
-        //    // Siparişin kendisinin soft delete edilmesi
-        //    order.IsDeleted = true;
-        //    order.UpdatedAt = DateTime.Now;
-
-        //    // Güncellemeyi bildir
-        //    _orderRepository.Update(order);
-
-        //    try
-        //    {
-        //        await _unitOfWork.SaveChangesAsync();
-
-        //        return new ServiceMessage
-        //        {
-        //            IsSucceed = true,
-        //            Message = "Sipariş ve ilişkili teknisyen bağlantıları başarıyla silindi."
-        //        };
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return new ServiceMessage
-        //        {
-        //            IsSucceed = false,
-        //            Message = $"Sipariş silinirken hata oluştu: {ex.Message}"
-        //        };
-        //    }
-        //}
         public async Task<ServiceMessage> DeleteOrder(int id)
         {
             var order = _orderRepository.GetById(id);
@@ -177,10 +128,10 @@ namespace DentLabTrack.Business.Operations.Order
                 };
             }
             await _unitOfWork.BeginTransaction();
-            // Siparişin kendisinin soft delete edilmesi
+
             order.IsDeleted = true;
             order.UpdatedAt = DateTime.Now;
-            // Güncellemeyi bildir
+
             _orderRepository.Update(order);
             try
             {

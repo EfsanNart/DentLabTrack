@@ -8,7 +8,7 @@ namespace DentLabTrack.Data.Enums
 {
     public enum UserType
     {
-        //Burada kullanıcı türlerini belirliyoruz. Kullanıcı türleri: Admin, Doctor, LabTechnician
+        
         Admin, Doctor, LabTechnician
     }
 }

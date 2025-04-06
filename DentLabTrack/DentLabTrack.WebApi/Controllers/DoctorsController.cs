@@ -59,24 +59,7 @@ namespace DentLabTrack.WebApi.Controllers
             return BadRequest(result.Message);
         }
 
-        //[HttpDelete]
-        //[Authorize(Roles = "Admin,Doctor")]
-        //public async Task<IActionResult> DeleteDoctor(DeleteDoctorRequest request)
-        //{
-        //    var deleteDoctorDto = new DeleteDoctorDto
-        //    {
-        //        Id = request.Id
-        //    };
-        //    var result = await _doctorService.DeleteDoctor(deleteDoctorDto);
-        //    if (result.IsSucceed)
-        //    {
-        //        return Ok(result);
-        //    }
-        //    else
-        //    {
-        //        return BadRequest(result.Message);
-        //    }
-        //}
+    
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteDoctor(int id)

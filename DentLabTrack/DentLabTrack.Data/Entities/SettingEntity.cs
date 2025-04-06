@@ -8,7 +8,7 @@ namespace DentLabTrack.Data.Entities
 {
     public class SettingEntity:BaseEntity
     {
-        //Burada uygulama ayarlarını tutacağım. Örneğin uygulamanın bakımda olup olmadığını burada tutacağım.
+        
         public bool MaintenenceMode { get; set; }
     }
 }

@@ -5,8 +5,8 @@ namespace DentLabTrack.Business.Operations.User
 {
     public interface IUserService
     {
-        /// UserService sınıfı, kullanıcı işlemlerini gerçekleştirmek için kullanılır..
-        Task<ServiceMessage> AddUser(AddUserDto user); //async çünkü untiofwork kullanılacak
+        
+        Task<ServiceMessage> AddUser(AddUserDto user); 
         ServiceMessage<UserInfoDto> LoginUser(LoginUserDto loginUserDto);
     }
 }

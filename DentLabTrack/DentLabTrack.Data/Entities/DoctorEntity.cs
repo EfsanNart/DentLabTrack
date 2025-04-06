@@ -15,8 +15,7 @@ namespace DentLabTrack.Data.Entities
         public string LastName { get; set; }
         public string ClinicName { get; set; }
 
-        //Relational Properties
-        //Bire çok ilişki: Bir doktor birden fazla sipariş verebilir
+    
         public ICollection<OrderEntity> Orders { get; set; } = new List<OrderEntity>();
 
     }

@@ -20,7 +20,7 @@ namespace DentLabTrack.Data.Configurations
             builder.Property(u => u.Password).IsRequired();
 
             builder.Property(u => u.UserType)
-                .HasConversion<int>() // Enum'u int olarak saklıyoruz
+                .HasConversion<int>() 
                 .IsRequired();
             base.Configure(builder);
         }

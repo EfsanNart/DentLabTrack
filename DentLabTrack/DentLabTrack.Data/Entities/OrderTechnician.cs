@@ -5,7 +5,7 @@ namespace DentLabTrack.Data.Entities
 {
     public class OrderTechnician :BaseEntity
     {
-        //Bu sınıfım ara tablo olarak kullanılır. Order ve LabTechnician tablosu arasındaki ilişkiyi temsil eder.
+        
         public int OrderId { get; set; }
         public OrderEntity Order { get; set; }
 

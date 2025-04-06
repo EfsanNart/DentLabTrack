@@ -8,7 +8,7 @@ namespace DentLabTrack.Business.DataProtection
 {
     public interface IDataProtection
     {
-        //Burada şifreleme ve şifre çözme işlemlerini yapacak olan metotları tanımlıyoruz.
+
         string Protect(string text);
         string Unprotect(string protectedText);
     }

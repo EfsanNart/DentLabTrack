@@ -14,10 +14,10 @@ namespace DentLabTrack.Data.Configurations
         public override void Configure(EntityTypeBuilder<OrderTechnician> builder)
         {
             
-            builder.Ignore(x => x.Id);// Burada Base'den gelen Id'yi ignore ediyoruz çünkü composite key kullanıyoruz.
-            builder.HasKey("OrderId", "TechnicianId"); //Burada composite key tanımlıyoruz yani OrderId ve TechnicianId'yi birleştirerek tek bir anahtar oluşturuyoruz.
+            builder.Ignore(x => x.Id);
+            builder.HasKey("OrderId", "TechnicianId");
 
-            base.Configure(builder); // ← Query filter ve tarih ayarları gibi şeyleri uygular
+            base.Configure(builder); 
 
         }
     }

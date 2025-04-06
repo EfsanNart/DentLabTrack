@@ -56,36 +56,7 @@ namespace DentLabTrack.Business.Operations.Doctor
         }
 
 
-        //public async Task<ServiceMessage> DeleteDoctor(DeleteDoctorDto dto)
-        //{
-        //    var doctor = _doctorRepository.GetById(dto.Id);
-        //    if (doctor == null || doctor.IsDeleted)
-        //    {
-        //        return new ServiceMessage
-        //        {
-        //            IsSucceed = false,
-        //            Message = "Doktor bulunamadı."
-        //        };
-
-        //    }
-
-        //    _doctorRepository.Delete(doctor);
-
-        //    try
-        //    {
-        //        await _unitOfWork.SaveChangesAsync();
-
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw new Exception("Doktor silinirken bir hata oluştu");
-        //    }
-        //    return new ServiceMessage
-        //    {
-        //        IsSucceed = true,
-        //        Message = "Doktor başarıyla silindi"
-        //    };
-        //}
+        
         public async Task<ServiceMessage> DeleteDoctor(int id)
         {
             var patient = _doctorRepository.GetById(id);

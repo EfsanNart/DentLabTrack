@@ -19,9 +19,9 @@ namespace DentLabTrack.Data.Configurations
             builder.Property(o => o.OrderDate).IsRequired();
             builder.Property(o => o.EstimatedDeliveryDate).IsRequired(false);
 
-            // Enum için dönüşüm
+         
             builder.Property(o => o.OrderStatus)
-                .HasConversion<int>() // Enum değerini int olarak sakla
+                .HasConversion<int>() 
                 .IsRequired();
 
 
