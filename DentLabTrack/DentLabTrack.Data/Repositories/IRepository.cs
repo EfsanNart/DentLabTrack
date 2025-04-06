@@ -1,0 +1,27 @@
+﻿using DentLabTrack.Data.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DentLabTrack.Data.Repositories
+{
+    public interface IRepository<TEntity> where TEntity : class
+    {
+
+        //  Repository sınıfı, veritabanı işlemlerini gerçekleştirmek için kullanılır.Yani veritabanına veri eklemek, silmek, güncellemek ve verileri almak için kullanılır.
+
+
+        void Add(TEntity entity);
+        void Delete(TEntity entity,bool softDelete=true);
+        void Delete(int id);
+        void Update(TEntity entity);
+       
+        TEntity GetById(int id);
+        List<OrderEntity> GetOrdersByDoctorId(int doctorId);
+        TEntity Get(Expression<Func<TEntity,bool>> predicate);
+        IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate=null);
+    }
+}

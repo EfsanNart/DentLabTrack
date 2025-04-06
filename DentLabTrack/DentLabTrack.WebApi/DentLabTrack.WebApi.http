@@ -1,0 +1,6 @@
+@DentLabTrack.WebApi_HostAddress = http://localhost:5094
+
+GET {{DentLabTrack.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
