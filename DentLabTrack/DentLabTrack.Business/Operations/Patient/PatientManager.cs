@@ -21,7 +21,7 @@ namespace DentLabTrack.Business.Operations.Patient
             _unitOfWork = unitOfWork;
             _patientRepository = patientRepository;
         }
-
+        //This method is responsible for adding a new patient. It checks if the email already exists and if not, it creates a new patient entity and saves it to the database.
         public async Task<ServiceMessage> AddPatient(AddPatientDto dto)
         {
             var exists = _patientRepository.GetAll(x => x.Email.ToLower() == dto.Email.ToLower()).Any();
@@ -52,6 +52,7 @@ namespace DentLabTrack.Business.Operations.Patient
             }
         }
 
+        //This method is responsible for retrieving all patients from the database. It filters out deleted patients and returns a list of patient DTOs.
         public async Task<List<GetPatientDto>> GetAllPatients()
         {
             var patients = _patientRepository.GetAll(x => !x.IsDeleted).ToList();
@@ -66,7 +67,7 @@ namespace DentLabTrack.Business.Operations.Patient
                 Address = p.Address
             }).ToList();
         }
-
+        //This method is responsible for retrieving a specific patient by ID. It returns a patient DTO if found, otherwise it returns null.
         public async Task<ServiceMessage> UpdatePatient(UpdatePatientDto dto)
         {
             var patient = _patientRepository.GetById(dto.Id);
@@ -94,6 +95,7 @@ namespace DentLabTrack.Business.Operations.Patient
             }
         }
 
+        //This method is responsible for deleting a specific patient by ID. It marks the patient as deleted and saves the changes to the database.
         public async Task<ServiceMessage> DeletePatient(int id)
         {
             var patient = _patientRepository.GetById(id);

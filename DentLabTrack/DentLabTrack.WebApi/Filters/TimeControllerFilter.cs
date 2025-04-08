@@ -5,8 +5,8 @@ namespace DentLabTrack.WebApi.Filters
 {
     public class TimeControllerFilter:ActionFilterAttribute
     {
-       
-    
+
+        //This filter is used to restrict access to certain endpoints based on the time of day
         public string StartTime{ get; set; }
         public string EndTime { get; set; }
 

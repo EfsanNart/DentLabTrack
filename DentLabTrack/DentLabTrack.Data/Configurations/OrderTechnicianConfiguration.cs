@@ -13,9 +13,9 @@ namespace DentLabTrack.Data.Configurations
     {
         public override void Configure(EntityTypeBuilder<OrderTechnician> builder)
         {
-            
-            builder.Ignore(x => x.Id);
-            builder.HasKey("OrderId", "TechnicianId");
+          
+            builder.Ignore(x => x.Id); //We ignore the id coming from the base entity
+            builder.HasKey("OrderId", "TechnicianId"); // Composite key for the join table 
 
             base.Configure(builder); 
 

@@ -13,6 +13,7 @@ namespace DentLabTrack.WebApi.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+        //This controller is responsible for authentication and authorization operations.
         private readonly IUserService _userService;
         public AuthController(IUserService userService)
         {
@@ -78,7 +79,7 @@ namespace DentLabTrack.WebApi.Controllers
             });
         }
         [HttpGet("me")]
-        [Authorize]
+        [Authorize(Roles = "Doctor,Technician,Admin")]
         public IActionResult GetMyUser()
         {
             return Ok();

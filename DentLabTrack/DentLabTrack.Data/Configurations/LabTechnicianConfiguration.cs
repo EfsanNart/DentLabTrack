@@ -13,6 +13,7 @@ namespace DentLabTrack.Data.Configurations
         public override void Configure(EntityTypeBuilder<LabTechnicianEntity> builder)
         {
 
+            // Configure the properties of the LabTechnicianEntity
 
             builder.Property(lt => lt.FirstName).IsRequired().HasMaxLength(50);
             builder.Property(lt => lt.LastName).IsRequired().HasMaxLength(50);

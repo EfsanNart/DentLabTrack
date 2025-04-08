@@ -2,6 +2,7 @@
 
 namespace DentLabTrack.WebApi.Models
 {
+    //This class represents the request model for user login
     public class LoginRequest
     {
         

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace DentLabTrack.Data.Entities
 {
+    
     public class SettingEntity:BaseEntity
     {
-        
+        //Settings for the application 
         public bool MaintenenceMode { get; set; }
     }
 }

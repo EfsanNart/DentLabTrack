@@ -2,6 +2,8 @@
 
 namespace DentLabTrack.WebApi.Models
 {
+    
+    // This class is used to create a new lab technician
     public class AddLabTechnicianRequest
     {
         [Required]

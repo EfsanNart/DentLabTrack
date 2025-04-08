@@ -5,6 +5,8 @@ namespace DentLabTrack.WebApi.Middlewares
     public class MaintenenceMiddleware
     {
         
+        // This middleware checks if the application is in maintenance mode.
+
         private readonly RequestDelegate _next;
         private readonly ISettingService _settingService;
 

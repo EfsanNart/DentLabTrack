@@ -12,7 +12,7 @@ namespace DentLabTrack.Data.Context
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            // Apply configurations for each entity
 
             modelBuilder.ApplyConfiguration(new DoctorConfiguration());
             modelBuilder.ApplyConfiguration(new LabTechnicianConfiguration());
@@ -21,7 +21,7 @@ namespace DentLabTrack.Data.Context
             modelBuilder.ApplyConfiguration(new UserEntityConfiguration());
             modelBuilder.ApplyConfiguration(new OrderTechnicianConfiguration());
 
-            
+            // Seed initial data for the Settings table
             modelBuilder.Entity<SettingEntity>().HasData(new SettingEntity 
             {
                 Id = 1,
@@ -33,7 +33,8 @@ namespace DentLabTrack.Data.Context
 
 
         }
-   
+
+        //Create a DbSet for each entity
         public DbSet<UserEntity> Users=> Set<UserEntity>();
         public DbSet<LabTechnicianEntity> LabTechnicians => Set<LabTechnicianEntity>();
         public DbSet<DoctorEntity> Doctors => Set<DoctorEntity>();

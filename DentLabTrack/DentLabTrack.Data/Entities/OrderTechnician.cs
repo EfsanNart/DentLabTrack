@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DentLabTrack.Data.Entities
 {
+    //This is the join table for the many-to-many relationship between OrderEntity and LabTechnicianEntity
     public class OrderTechnician :BaseEntity
     {
         

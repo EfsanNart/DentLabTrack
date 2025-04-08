@@ -20,12 +20,15 @@ namespace DentLabTrack.Business.Operations.Setting
             _settingRepository = settingRepository;
         }
 
+        // This method retrieves the current maintenance state of the application from the database.
         public bool GetMaintenenceState()
         {
             var maintenenceState = _settingRepository.GetById(1).MaintenenceMode;
             return maintenenceState;
         }
 
+        // This method is responsible for toggling the maintenance mode of the application.
+        // It retrieves the current setting, toggles the maintenance mode, and saves the changes to the database.
         public async Task ToggleMaintenence()
         {
             var setting = _settingRepository.GetById(1);

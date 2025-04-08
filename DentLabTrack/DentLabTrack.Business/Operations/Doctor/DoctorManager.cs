@@ -21,6 +21,7 @@ namespace DentLabTrack.Business.Operations.Doctor
             _unitOfWork = unitOfWork;
             _doctorRepository = doctorRepository;
         }
+        //This method is responsible for adding a new doctor to the database. It checks if the clinic name already exists and if not, it creates a new doctor entity and saves it to the database.
         public async Task<ServiceMessage> AddDoctor(AddDoctorDto addDoctorDto)
         {
             var hasDoctor = _doctorRepository.GetAll(x => x.ClinicName.ToLower() == addDoctorDto.ClinicName.ToLower()).Any();
@@ -56,7 +57,7 @@ namespace DentLabTrack.Business.Operations.Doctor
         }
 
 
-        
+        //This method is responsible for deleting a doctor from the database. It checks if the doctor exists and if so, marks it as deleted and saves the changes.
         public async Task<ServiceMessage> DeleteDoctor(int id)
         {
             var patient = _doctorRepository.GetById(id);
@@ -78,6 +79,8 @@ namespace DentLabTrack.Business.Operations.Doctor
             }
         }
 
+        //This method is responsible for updating an existing doctor's information.
+        //It checks if the doctor exists and if so, updates the information and saves it to the database.
         public async Task<ServiceMessage> UpdateDoctor(UpdateDoctorDto updateDoctorDto)
         {
 
@@ -108,6 +111,7 @@ namespace DentLabTrack.Business.Operations.Doctor
             };
 
         }
+        //This method is responsible for retrieving all doctors from the database. It filters out deleted doctors and returns a list of doctor DTOs.
         public async Task<List<GetDoctorDto>> GetAllDoctors()
         {
             var doctors = _doctorRepository

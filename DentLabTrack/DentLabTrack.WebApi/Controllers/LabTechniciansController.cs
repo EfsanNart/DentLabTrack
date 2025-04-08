@@ -39,6 +39,7 @@ namespace DentLabTrack.WebApi.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin,Doctor,LabTechnician")]
         public async Task<IActionResult> GetAllTechnicians()
         {
             var result = await _labTechnicianService.GetAllTechnicians();

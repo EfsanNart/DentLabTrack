@@ -24,9 +24,11 @@ namespace DentLabTrack.Data.Entities
         public DateTime OrderDate { get; set; }
         public DateTime? EstimatedDeliveryDate { get; set; }
 
-   
+
+        //Order status : New, InProgress, Completed, Delivered
         public OrderStatus OrderStatus { get; set; }
 
+        //many-to-many relationship with LabTechnicianEntity : A technician may work on more than one order and an order may be worked on by more than one technician
         public ICollection<OrderTechnician> OrderTechnicians { get; set; } = new List<OrderTechnician>();
       
     }

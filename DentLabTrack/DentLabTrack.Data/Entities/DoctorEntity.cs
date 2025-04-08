@@ -15,7 +15,8 @@ namespace DentLabTrack.Data.Entities
         public string LastName { get; set; }
         public string ClinicName { get; set; }
 
-    
+        //Relational properties
+        //One-to-many relationship with OrderEntity : A doctor may place more than one order
         public ICollection<OrderEntity> Orders { get; set; } = new List<OrderEntity>();
 
     }

@@ -14,10 +14,10 @@ using System.Threading.Tasks;
 
 namespace DentLabTrack.Business.Operations.User
 {
-    public class UserManager : IUserService
-        
+    public class UserManager : IUserService   
     {
-       
+        //This class is responsible for user management operations such as adding a new user and logging in an existing user.
+
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<UserEntity> _userRepository;
         private readonly IDataProtection _dataProtection;
@@ -28,6 +28,7 @@ namespace DentLabTrack.Business.Operations.User
             _userRepository = userRepository;
             _dataProtection = dataProtection;
         }
+        //This method is responsible for adding a new user. It checks if the email already exists and if not, it creates a new user entity and saves it to the database.
         public async Task<ServiceMessage> AddUser(AddUserDto user)
         {
 
@@ -65,7 +66,8 @@ namespace DentLabTrack.Business.Operations.User
             };
         }
 
-        public  ServiceMessage<UserInfoDto> LoginUser(LoginUserDto user)
+        //This method is responsible for logging in a user. It checks if the user exists and if the password is correct.
+        public ServiceMessage<UserInfoDto> LoginUser(LoginUserDto user)
         {
             var userEntity = _userRepository.Get(x => x.Email.ToLower() == user.Email.ToLower());
             if (userEntity is null)

@@ -2,6 +2,8 @@
 
 namespace DentLabTrack.WebApi.Models
 {
+    
+    //This class is used to create a new order
     public class AddOrderRequest
     {
         public int PatientId { get; set; }

@@ -14,7 +14,7 @@ namespace DentLabTrack.WebApi.Controllers
     [ApiController]
     public class OrdersController : ControllerBase
     {
-        
+        //Dependency injection for the order service
         private readonly IOrderService _orderService;
        
         public OrdersController(IOrderService orderService)
@@ -22,6 +22,7 @@ namespace DentLabTrack.WebApi.Controllers
             _orderService = orderService;
         }
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin,Doctor,LabTechnician")]
         public async Task<IActionResult> Get(int id)
         {
 
@@ -44,8 +45,8 @@ namespace DentLabTrack.WebApi.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "Admin,LabTechnician")]
-        [TimeControllerFilter] 
+        [Authorize(Roles = "Admin,LabTechnician")] 
+        [TimeControllerFilter] //This filter will be applied to this action so that it will be checked if the action is called within the allowed time range.
         public async Task<IActionResult> AddOrder( AddOrderRequest request)
         {
             var dto = new AddOrderDto
@@ -64,7 +65,8 @@ namespace DentLabTrack.WebApi.Controllers
 
             return BadRequest(result.Message);
         }
-        [HttpGet("{doctorId}/orders")]
+        [HttpGet("{doctorId}/orders")] 
+        [Authorize(Roles = "Admin,Doctor")]
         public async Task<IActionResult> GetOrdersByDoctorId(int doctorId)
         {
 
@@ -78,7 +80,8 @@ namespace DentLabTrack.WebApi.Controllers
                 return NotFound("No orders found for this doctor.");
             }
         }
-        [HttpPatch("adjust-order-status")]
+        [HttpPatch("adjust-order-status")] //This endpoint is used to adjust the order status.
+        [Authorize(Roles = "Admin,LabTechnician")]
         public async Task<IActionResult> AdjustOrderStatus(int id, OrderStatus newStatus)
         {
             var result = await _orderService.AdjustOrderStatus(id, newStatus);

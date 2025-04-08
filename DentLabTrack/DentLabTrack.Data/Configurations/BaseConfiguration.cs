@@ -14,10 +14,9 @@ namespace DentLabTrack.Data.Configurations
     {
         public virtual void Configure(EntityTypeBuilder<TEntity> builder)
         {
-            
-            builder.HasQueryFilter(x => !x.IsDeleted);
+            //Soft delete configuration
 
-            
+            builder.HasQueryFilter(x => !x.IsDeleted);
             builder.Property(x => x.UpdatedAt).IsRequired(false);
         }
     }

@@ -7,7 +7,7 @@ namespace DentLabTrack.WebApi.Jwt
 {
     public static class JwtHelper
     {
-       
+        // Generates a JWT token based on the provided JwtDto information.
         public static string GenerateJwtToken(JwtDto jwtInfo)
         {
             var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtInfo.SecretKey));

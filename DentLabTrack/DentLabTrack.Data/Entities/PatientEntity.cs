@@ -10,7 +10,8 @@ namespace DentLabTrack.Data.Entities
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
 
-
+        //Relational properties
+        //One-to-many relationship with OrderEntity : A patient may have more than one order
         public ICollection<OrderEntity> Orders { get; set; } = new List<OrderEntity>();
     }
    

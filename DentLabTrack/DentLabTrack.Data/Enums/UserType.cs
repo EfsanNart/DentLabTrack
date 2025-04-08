@@ -8,7 +8,7 @@ namespace DentLabTrack.Data.Enums
 {
     public enum UserType
     {
-        
+        //I determine user types
         Admin, Doctor, LabTechnician
     }
 }

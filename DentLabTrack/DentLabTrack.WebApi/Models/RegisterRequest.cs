@@ -2,6 +2,7 @@
 
 namespace DentLabTrack.WebApi.Models
 {
+    //This class is used to register a new user
     public class RegisterRequest
     {
         [Required]

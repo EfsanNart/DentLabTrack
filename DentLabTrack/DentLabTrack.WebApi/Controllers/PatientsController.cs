@@ -19,7 +19,7 @@ namespace DentLabTrack.WebApi.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Doctor")]
         public async Task<IActionResult> AddPatient(AddPatientRequest request)
         {
             var dto = new AddPatientDto
@@ -37,6 +37,7 @@ namespace DentLabTrack.WebApi.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin,Doctor,LabTechnician")]
         public async Task<IActionResult> GetAllPatients()
         {
             var result = await _patientService.GetAllPatients();
@@ -44,7 +45,7 @@ namespace DentLabTrack.WebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Doctor")]
         public async Task<IActionResult> UpdatePatient(int id, [FromBody] UpdatePatientRequest request)
         {
             var dto = new UpdatePatientDto

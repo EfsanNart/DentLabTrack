@@ -23,6 +23,7 @@ namespace DentLabTrack.Business.Operations.LabTechnician
             _technicianRepository = technicianRepository;
         }
 
+        //This method is responsible for adding a new lab technician. It checks if the email already exists and if not, it creates a new technician entity and saves it to the database.
         public async Task<ServiceMessage> AddLabTechnician(AddLabTechnicianDto dto)
         {
             var hasTechnician = _technicianRepository
@@ -62,7 +63,7 @@ namespace DentLabTrack.Business.Operations.LabTechnician
                 Message = "Teknisyen başarıyla eklendi."
             };
         }
-
+        //This method is responsible for retrieving all technicians from the database. It filters out deleted technicians and returns a list of technician DTOs.
         public async Task<List<GetLabTechnicianDto>> GetAllTechnicians()
         {
             var technicians = _technicianRepository
@@ -78,6 +79,8 @@ namespace DentLabTrack.Business.Operations.LabTechnician
                 PhoneNumber = t.PhoneNumber
             }).ToList();
         }
+        //This method is responsible for updating a technician's information.
+        //It checks if the technician exists and if so, updates the properties and saves the changes to the database.
         public async Task<ServiceMessage> UpdateTechnician(UpdateLabTechnicianDto dto)
         {
             var technician = _technicianRepository.GetById(dto.Id);
@@ -112,6 +115,7 @@ namespace DentLabTrack.Business.Operations.LabTechnician
             };
         }
 
+        //This method is responsible for deleting a technician. It checks if the technician exists and if so, marks it as deleted.
         public async Task<ServiceMessage> DeleteTechnician(int id)
         {
             var technician = _technicianRepository.GetById(id);

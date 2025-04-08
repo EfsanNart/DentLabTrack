@@ -16,6 +16,7 @@ namespace DentLabTrack.Business.Operations.Order
 {
     public class OrderManager : IOrderService
     {
+        //Dependency injection for the order repository, order technician repository, unit of work and the database context
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<OrderEntity> _orderRepository;
         private readonly IRepository<OrderTechnician> _orderTechnicianRepository;
@@ -31,7 +32,7 @@ namespace DentLabTrack.Business.Operations.Order
             _context = context;
             _unitOfWork = unitOfWork;
         }
-
+        //This method is responsible for adding a new order. It creates a new order entity and saves it to the database.
         public async Task<ServiceMessage> AddOrder(AddOrderDto dto)
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
@@ -80,6 +81,8 @@ namespace DentLabTrack.Business.Operations.Order
             }
         }
 
+        //This method is responsible for updating the status of an existing order.
+        //It checks if the order exists and if not, it returns a message indicating that the order was not found.
         public async Task<ServiceMessage> AdjustOrderStatus(int id, OrderStatus newStatus)
         {
             var order = _orderRepository.GetById(id);
@@ -115,7 +118,8 @@ namespace DentLabTrack.Business.Operations.Order
 
         }
 
-
+        //This method is responsible for updating an existing order. It checks if the order exists and if not, it returns a message indicating that the order was not found.
+        //If the order exists, it updates the order's properties and saves the changes to the database.
         public async Task<ServiceMessage> DeleteOrder(int id)
         {
             var order = _orderRepository.GetById(id);
@@ -151,31 +155,28 @@ namespace DentLabTrack.Business.Operations.Order
             };
         }
 
-
-
-
         public async Task<OrderDto> GetOrder(int id)
         {
-            var order = await _orderRepository.GetAll(x => x.Id == id)
-       .Select(x => new OrderDto
-       {
-           Id = x.Id,
-           PatientId = x.PatientId,
-           DoctorId = x.DoctorId,
-           TreatmentType = x.TreatmentType,
-           OrderDate = x.OrderDate,
-           EstimatedDeliveryDate = x.EstimatedDeliveryDate,
-           OrderStatus = x.OrderStatus,
-           Technicians = x.OrderTechnicians.Select(ot => new OrderTechnicianDto
-           {
-               TechnicianId = ot.TechnicianId,
-               FirstName = ot.Technician.FirstName,
-               LastName = ot.Technician.LastName,
-           }).ToList()
-       }).FirstOrDefaultAsync();
+            var order = await _orderRepository.GetAll(x => x.Id == id).Select(x => new OrderDto
+            {
+                Id = x.Id,
+                PatientId = x.PatientId,
+                DoctorId = x.DoctorId,
+                TreatmentType = x.TreatmentType,
+                OrderDate = x.OrderDate,
+                EstimatedDeliveryDate = x.EstimatedDeliveryDate,
+                OrderStatus = x.OrderStatus,
+                Technicians = x.OrderTechnicians.Select(ot => new OrderTechnicianDto
+                {
+                    TechnicianId = ot.TechnicianId,
+                    FirstName = ot.Technician.FirstName,
+                    LastName = ot.Technician.LastName,
+                }).ToList()
+            }).FirstOrDefaultAsync();
+
             return order;
         }
-
+        //This method is responsible for retrieving all orders from the database. It filters out deleted orders and returns a list of order DTOs.
         public async Task<List<OrderDto>> GetOrdersByDoctorId(int doctorId)
         {
 
@@ -193,8 +194,5 @@ namespace DentLabTrack.Business.Operations.Order
             }).ToList();
             return orderDtos;
         }
-
-
-
     }
 }

@@ -5,7 +5,7 @@ namespace DentLabTrack.WebApi.Middlewares
 {
     public class ExceptionHandlingMiddleware
     {
-       
+        // Middleware to handle exceptions globally
         private readonly RequestDelegate _next;
         private readonly ILogger<ExceptionHandlingMiddleware> _logger;
 

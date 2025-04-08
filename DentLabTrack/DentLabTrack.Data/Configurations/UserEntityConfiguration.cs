@@ -19,6 +19,7 @@ namespace DentLabTrack.Data.Configurations
             builder.Property(u => u.Email).IsRequired().HasMaxLength(100);
             builder.Property(u => u.Password).IsRequired();
 
+            // Configure the UserType property
             builder.Property(u => u.UserType)
                 .HasConversion<int>() 
                 .IsRequired();

@@ -17,7 +17,7 @@ namespace DentLabTrack.WebApi.Controllers
         }
         [HttpPatch]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> ToggleMaintenence()
+        public async Task<IActionResult> ToggleMaintenence() 
         {
             await _settingService.ToggleMaintenence();
             return Ok("Maintenance mode toggled successfully.");

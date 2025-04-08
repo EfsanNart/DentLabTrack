@@ -10,7 +10,7 @@ namespace DentLabTrack.Data.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-
+        // Generic repository interface for CRUD operations
         void Add(TEntity entity);
         void Delete(TEntity entity,bool softDelete=true);
         void Delete(int id);

@@ -5,7 +5,7 @@ namespace DentLabTrack.Data.Entities
 {
     public class LabTechnicianEntity:BaseEntity
     {
-
+        public string FirstName { get; set; }
         public string LastName { get; set; }
 
         [EmailAddress]
@@ -13,7 +13,8 @@ namespace DentLabTrack.Data.Entities
 
         public string PhoneNumber { get; set; }
 
-
+        //Relational properties
+        //Many-to-many relationship with OrderEntity : A technician may work on more than one order and an order may be worked on by more than one technician
         public ICollection<OrderTechnician> OrderTechnicians { get; set; } = new List<OrderTechnician>();
 
 

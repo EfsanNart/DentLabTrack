@@ -12,7 +12,7 @@ namespace DentLabTrack.Data.Configurations
     {
         public override void Configure(EntityTypeBuilder<PatientEntity> builder)
         {
-
+            // Configure the properties of the PatientEntity
 
             builder.Property(p => p.FirstName).IsRequired().HasMaxLength(50);
             builder.Property(p => p.LastName).IsRequired().HasMaxLength(50);

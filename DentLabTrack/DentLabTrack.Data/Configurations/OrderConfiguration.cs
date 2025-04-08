@@ -19,7 +19,8 @@ namespace DentLabTrack.Data.Configurations
             builder.Property(o => o.OrderDate).IsRequired();
             builder.Property(o => o.EstimatedDeliveryDate).IsRequired(false);
 
-         
+
+            //Order status : New, InProgress, Completed, Delivered
             builder.Property(o => o.OrderStatus)
                 .HasConversion<int>() 
                 .IsRequired();

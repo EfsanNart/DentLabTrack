@@ -40,8 +40,8 @@ builder.Services.AddSwaggerGen(options =>
             Type = ReferenceType.SecurityScheme,
 
         }
-    };
-    options.AddSecurityDefinition(jwtSecurityScheme.Reference.Id, jwtSecurityScheme);
+    }; // Add JWT security scheme
+    options.AddSecurityDefinition(jwtSecurityScheme.Reference.Id, jwtSecurityScheme);  // Add security definition for JWT
 
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
@@ -49,14 +49,14 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-builder.Services.AddScoped<IDataProtection, DataProtection>();
+builder.Services.AddScoped<IDataProtection, DataProtection>(); // Custom data protection service
 
-var keysDirectory = new DirectoryInfo(Path.Combine(builder.Environment.ContentRootPath, "App_Data", "Keys"));
+var keysDirectory = new DirectoryInfo(Path.Combine(builder.Environment.ContentRootPath, "App_Data", "Keys")); 
 builder.Services.AddDataProtection()
     .SetApplicationName("DentLabTrack")
     .PersistKeysToFileSystem(keysDirectory);
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme) // Add authentication middleware
     .AddJwtBearer(options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
@@ -80,7 +80,9 @@ builder.Services.AddDbContext<DentLabTrackDbContext>(options => options.UseSqlSe
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
-builder.Services.AddScoped<IUserService, UserManager>();
+
+builder.Services.AddScoped<IUserService, UserManager>(); 
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IDoctorService, DoctorManager>();
 builder.Services.AddScoped<IOrderService, OrderManager>();
 builder.Services.AddScoped<ILabTechnicianService, LabTechnicianManager>();
@@ -88,7 +90,7 @@ builder.Services.AddScoped<IPatientService, PatientManager>();
 builder.Services.AddScoped<ISettingService, SettingManager>();
 
 var app = builder.Build();
-app.UseExceptionMiddleware();
+app.UseExceptionMiddleware(); // Custom middleware for exception handling
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -98,12 +100,12 @@ if (app.Environment.IsDevelopment())
 }
 
 
-app.UseMaintenenceMode();
+app.UseMaintenenceMode(); // Custom middleware for maintenance mode
 
 
 app.UseHttpsRedirection();
-app.UseAuthentication();
-app.UseAuthorization();
+app.UseAuthentication(); // Enable authentication
+app.UseAuthorization(); 
 
 app.MapControllers();
 

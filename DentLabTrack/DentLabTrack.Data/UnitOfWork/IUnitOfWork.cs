@@ -8,6 +8,7 @@ namespace DentLabTrack.Data.UnitOfWork
 {
     public interface IUnitOfWork: IDisposable
     {
+        //For example, when an order is added, I want to add the technicians related to that order and I manage this as a single transaction.
         Task<int> SaveChangesAsync();
         Task BeginTransaction();
         Task CommitTransaction();

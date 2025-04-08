@@ -13,10 +13,12 @@ namespace DentLabTrack.Data.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
+        //Dependency injection
         private readonly DentLabTrackDbContext _context;
         private readonly DbSet<TEntity> _dbSet;
         public Repository(DentLabTrackDbContext context)
         {
+            //Constructor injection
             _context = context;
             _dbSet = context.Set<TEntity>();
           
