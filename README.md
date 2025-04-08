@@ -86,17 +86,47 @@ All services and repositories are injected using the built-in **Dependency Injec
 
 ## 🔧 RESTful API Endpoints
 
-Standard HTTP methods are implemented:
+### 🔐 Auth
+- `POST /api/Auth/Register` – Register a new user  
+- `POST /api/Auth/Login` – User login  
+- `GET /api/Auth/Me` – Get current authenticated user info
 
-- `GET` - Retrieve data  
-- `POST` - Add new records  
-- `PUT` - Full update  
-- `PATCH` - Partial update  
-- `DELETE` - Soft delete
+### 🧑‍⚕️ Doctors
+- `POST /api/Doctors` – Add a new doctor  
+- `GET /api/Doctors` – Get all doctors  
+- `GET /api/Doctors/{id}` – Get doctor by ID  
+- `PUT /api/Doctors/{id}` – Update doctor by ID  
+- `DELETE /api/Doctors/{id}` – Delete doctor by ID
+
+### 🔬 LabTechnicians
+- `POST /api/LabTechnicians` – Add a new lab technician  
+- `GET /api/LabTechnicians` – Get all lab technicians  
+- `GET /api/LabTechnicians/{id}` – Get lab technician by ID  
+- `PUT /api/LabTechnicians/{id}` – Update lab technician by ID  
+- `DELETE /api/LabTechnicians/{id}` – Delete lab technician by ID
+
+### 📆 Orders
+- `GET /api/Orders/{id}` – Get order by ID  
+- `DELETE /api/Orders/{id}` – Delete order by ID  
+- `GET /api/Orders/lab-technician` – Get orders by lab technician  
+- `GET /api/Orders` – Get all orders  
+- `POST /api/Orders` – Create a new order  
+- `POST /api/Orders/{doctorId}/orders` – Create an order for a specific doctor  
+- `PATCH /api/Orders/{orderId}/order-status` – Update order status
+
+### 🧝 Patients
+- `POST /api/Patients` – Add a new patient  
+- `GET /api/Patients` – Get all patients  
+- `GET /api/Patients/{id}` – Get patient by ID  
+- `PUT /api/Patients/{id}` – Update patient by ID  
+- `DELETE /api/Patients/{id}` – Delete patient by ID
+
+### ⚙️ Settings
+- `PATCH /api/Settings` – Update application settings
 
 ---
 
-## 📦 Sample Features
+## 📆 Sample Features
 
 - 👨‍⚕️ Add an order and assign multiple technicians with one request
 - 🔐 Role-based access: Only authorized users can perform critical actions
@@ -122,6 +152,4 @@ It aims to demonstrate real-world software development practices using ASP.NET C
 Feel free to explore, contribute, or reach out for collaboration!
 
 ---
-
-
 
